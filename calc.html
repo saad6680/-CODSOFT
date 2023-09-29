@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Calculator</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div id="calculator">
+        <div id="display">0</div>
+        <div id="calculator-buttons">
+            <div class="button" onclick="appendToDisplay('7')">7</div>
+            <div class="button" onclick="appendToDisplay('8')">8</div>
+            <div class="button" onclick="appendToDisplay('9')">9</div>
+            <div class="button" onclick="appendToDisplay('+')">+</div>
+            <div class="button" onclick="appendToDisplay('4')">4</div>
+            <div class="button" onclick="appendToDisplay('5')">5</div>
+            <div class="button" onclick="appendToDisplay('6')">6</div>
+            <div class="button" onclick="appendToDisplay('-')">-</div>
+            <div class="button" onclick="appendToDisplay('1')">1</div>
+            <div class="button" onclick="appendToDisplay('2')">2</div>
+            <div class="button" onclick="appendToDisplay('3')">3</div>
+            <div class="button" onclick="appendToDisplay('*')">*</div>
+            <div class="button" onclick="appendToDisplay('0')">0</div>
+            <div class="button" onclick="clearDisplay()">C</div>
+            <div class="button" onclick="deleteLastCharacter()">Del</div>
+            <div class="button" onclick="calculateResult()">=</div>
+            <div class="button" onclick="appendToDisplay('/')">/</div>
+        </div>
+    </div>
+
+    <script>
+        let display = document.getElementById("display");
+        let currentInput = "";
+        
+        function appendToDisplay(value) {
+            currentInput += value;
+            display.textContent = currentInput;
+        }
+        
+        function clearDisplay() {
+            currentInput = "";
+            display.textContent = "0";
+        }
+
+        function deleteLastCharacter() {
+            currentInput = currentInput.slice(0, -1);
+            display.textContent = currentInput;
+        }
+        
+        function calculateResult() {
+            try {
+                currentInput = eval(currentInput).toString();
+                display.textContent = currentInput;
+            } catch (error) {
+                display.textContent = "Error";
+            }
+        }
+    </script>
+</body>
+</html>
